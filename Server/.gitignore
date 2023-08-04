@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules/
+# Environment configuration
+.env
+# Log files
+logs/
+# Compiled output or build artifacts
+dist/
+build/
+# Editor or IDE configuration
+.vscode/
+.idea/
+*.sublime-*
+# Miscellaneous
+.DS_Store
+Thumbs.db
