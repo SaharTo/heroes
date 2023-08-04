@@ -1,0 +1,59 @@
+/* styles.css */
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+  align-items: center;
+  margin: auto;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+}
+
+.button {
+  width: 100px;
+  color: #333;
+}
+.greeting {
+  width: 70%;
+  display: flex;
+  background-color: rgb(165, 214, 165);
+  min-height: 500px;
+  border-radius: 60px;
+  margin: auto;
+  flex-direction: column;
+}
+.greetingTitle {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.greetingDescription {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+.fullContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.button {
+  margin-bottom: 30px;
+}
+.error-message {
+  color: rgb(94, 1, 1);
+  max-width: 300px;
+  font-size: 15px;
+}
+.backBtn {
+  width: 60px;
+  margin: 20px;
+}
