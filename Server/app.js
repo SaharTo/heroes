@@ -4,12 +4,21 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var generalRouter = require("./routes/general");
 var trainerRouter = require("./routes/trainer");
 
 var app = express();
+
+// Allow requests from your React app's domain
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Replace with your React app's URL
+    credentials: true, // Allow credentials (cookies)
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

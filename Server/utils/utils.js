@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const isPasswordValid = (password) => {
   const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#?$%^&*()]).{8,}$/;
@@ -36,10 +37,28 @@ const comparePasswords = async (inputPassword, hashedPassword) => {
   }
 };
 
+const createToken = (payload) => {
+  const secretKey = process.env.SECRET_KEY;
+  return jwt.sign(payload, secretKey);
+};
+
+const verifyToken = (token) => {
+  const secretKey = process.env.SECRET_KEY;
+
+  try {
+    const decoded = jwt.verify(token, secretKey);
+    return decoded;
+  } catch (err) {
+    return null; // Token is invalid or expired
+  }
+};
+
 module.exports = {
   isPasswordValid,
   isUsernameValid,
   isEmailValid,
   hashPassword,
   comparePasswords,
+  createToken,
+  verifyToken,
 };
