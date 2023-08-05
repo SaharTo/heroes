@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css"; // Import the CSS file
+import "./styles.css";
 import Button from "../../Components/Buttons/Button";
 import Input from "../../Components/Input/Input";
 import { isPasswordValid, isUsernameValid } from "../../Utils/Utils";
@@ -16,7 +16,6 @@ export const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
-    console.log(event.target.value);
     setUsername(event.target.value);
     validateUserNameStrength(event.target.value);
   };
@@ -55,7 +54,6 @@ export const RegisterPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handle submit - " + username);
     if (username.length === 0) {
       setUserNameError("Please enter a username.");
       return;
@@ -73,12 +71,38 @@ export const RegisterPage = () => {
       setRepeatPasswordError("Passwords do not match");
       return;
     }
-
-    // Perform registration logic
-    console.log(
-      "submitting - user name - " + username + " password - " + password
-    );
+    handleRegister();
   };
+
+  const handleRegister = async () => {
+    const formData = {
+      username: username,
+      password: password,
+    };
+    try {
+      const response = await fetch("http://localhost:3001/trainer/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Registration successful
+        const data = await response.json();
+        sessionStorage.setItem("access_token", data.token);
+
+        navigate("/dashboard", { replace: true });
+      } else {
+        // Registration failed
+        setPasswordError("invalid inputs");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
+  };
+
   const goBack = () => {
     navigate("/", { replace: true });
   };

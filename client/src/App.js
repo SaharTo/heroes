@@ -9,6 +9,7 @@ import {
   NotFoundPage,
   RegisterPage,
 } from "./Screens";
+import Dashboard from "./Screens/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/about" element={<AboutPage />} />
           <Route exact path="/register" element={<RegisterPage />} />
           <Route exact path="/login" element={<LoginPage />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

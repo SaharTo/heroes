@@ -1,5 +1,4 @@
-import "./styles.css"; // Import the CSS file
-
+import "./styles.css";
 const Input = (props) => {
   const { type, placeholder, value, onChange, className } = props;
   return (

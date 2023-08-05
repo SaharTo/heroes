@@ -34,6 +34,34 @@ export const LoginPage = () => {
     navigate("/", { replace: true });
   };
 
+  const handleLogin = async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = {
+      username: username,
+      password: password,
+    };
+    try {
+      const response = await fetch("http://localhost:3001/trainer/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        sessionStorage.setItem("access_token", data.token);
+        navigate("/dashboard", { replace: true });
+      } else {
+        setLoginError("Invalid username or password");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="greeting">
@@ -52,7 +80,7 @@ export const LoginPage = () => {
               flexDirection: "column",
               minWidth: "300px",
             }}
-            onSubmit={handleSubmit}
+            onSubmit={handleLogin}
           >
             <Input
               type="text"
@@ -72,7 +100,7 @@ export const LoginPage = () => {
             <Button
               type="submit"
               label="Login"
-              onClick={handleSubmit}
+              onClick={handleLogin}
               className="button"
             />
           </form>

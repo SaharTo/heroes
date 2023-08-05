@@ -1,0 +1,30 @@
+.hero-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.hero-card p:nth-child(2) {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.hero-card p {
+  margin: 10px 0;
+}
+
+.hero-card p:nth-last-child(1),
+.hero-card p:nth-last-child(2) {
+  font-weight: bold;
+}
+.hero-card {
+  background-color: rgb(238, 233, 203);
+  max-width: 400px;
+  min-height: 300px;
+  border-radius: 20px;
+}
+.boosBtn {
+  background-color: rgb(208, 242, 245);
+}

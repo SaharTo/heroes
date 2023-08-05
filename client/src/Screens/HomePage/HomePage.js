@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { MyContext } from "../../Context/MyContext"; // Import MyContext from MyContext.js
-import "./styles.css"; // Import the CSS file
+import "./styles.css";
 import Button from "../../Components/Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { superman } from "../../Assets";
